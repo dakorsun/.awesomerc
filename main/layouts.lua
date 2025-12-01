@@ -1,6 +1,9 @@
+-- Standart awesome library
 local awful = require("awful")
 
 local _M = {}
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 function _M.get()
     local layouts = {
@@ -30,6 +33,8 @@ function _M.get()
 
     return layouts
 end
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return setmetatable({},
     { __call = function(_, ...) return _M.get(...) end }

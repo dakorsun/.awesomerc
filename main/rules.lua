@@ -84,6 +84,8 @@ function _M.get(clientkeys, clientbuttons)
     return rules
 end
 
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
 return setmetatable(
     {},
     { __call = function(_, ...) return _M.get(...) end }
