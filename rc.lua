@@ -42,6 +42,7 @@ menubar.utils.terminal = RC.vars.terminal
 awful.rules.rules = main.rules(clientkeys, clientbuttons)
 
 require("main.error-handling")
+require("main.signals")
 
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
