@@ -90,6 +90,12 @@ local binding = {
     clientkeys    = require("binding.clientkeys")
 }
 
+-- Rule
+awful.rules.rules = main.rules(
+    clientkeys,
+    binding.clientbuttons()
+)
+
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
