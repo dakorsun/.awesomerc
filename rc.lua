@@ -80,6 +80,16 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
+
+-- Custom Local Library: Keys and Mouse Binding
+local binding = {
+    globalbuttons = require("binding.globalbuttons"),
+    clientbuttons = require("binding.clientbuttons"),
+    globalkeys    = require("binding.globalkeys"),
+    bindtotags    = require("binding.bindtotags"),
+    clientkeys    = require("binding.clientkeys")
+}
+
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
@@ -202,11 +212,12 @@ end)
 
 -- {{{ Mouse bindings
 -- @DOC_ROOT_BUTTONS@
-root.buttons(gears.table.join(
-    awful.button({}, 3, function() mymainmenu:toggle() end),
-    awful.button({}, 4, awful.tag.viewnext),
-    awful.button({}, 5, awful.tag.viewprev)
-))
+root.buttons(binding.globalbuttons())
+-- root.buttons(gears.table.join(
+--     awful.button({}, 3, function() mymainmenu:toggle() end),
+--     awful.button({}, 4, awful.tag.viewnext),
+--     awful.button({}, 5, awful.tag.viewprev)
+-- ))
 -- }}}
 
 -- {{{ Key bindings
