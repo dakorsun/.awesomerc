@@ -64,7 +64,7 @@ function _M.get(globalkeys)
             end
           end
         end,
-        {description = "toggle focused client on tag #" .. i, group = "tag"})
+        {description = "toggle focused client on tag #" .. i, group = "tag"}),
 
       --  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 

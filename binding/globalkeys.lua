@@ -1,6 +1,7 @@
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+local naughty = require("naughty")
 -- local hotkeys_popup = require("awful.hotkeys_popup").widget
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Menubar library
@@ -151,6 +152,81 @@ function _M.get()
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 
+
+    -- --------------------------
+    -- 🔊 AUDIO (PULSEAUDIO/PipeWire)
+    -- --------------------------
+
+    awful.key({}, "XF86AudioRaiseVolume",
+        function() awful.spawn("pamixer -i 5") end,
+        {description = "volume up", group = "audio"}),
+
+    awful.key({}, "XF86AudioLowerVolume",
+        function() awful.spawn("pamixer -d 5") end,
+        {description = "volume down", group = "audio"}),
+
+    awful.key({}, "XF86AudioMute",
+        function() awful.spawn("pamixer -t") end,
+        {description = "toggle mute", group = "audio"}),
+
+    awful.key({}, "XF86AudioMicMute",
+        function() awful.spawn("pamixer --default-source -t") end,
+        {description = "toggle microphone", group = "audio"}),
+
+    awful.key({}, "XF86AudioPlay",
+        function() awful.spawn("playerctl play-pause") end,
+        {description = "play/pause", group = "media"}),
+
+    awful.key({}, "XF86AudioNext",
+        function() awful.spawn("playerctl next") end,
+        {description = "next track", group = "media"}),
+
+    awful.key({}, "XF86AudioPrev",
+        function() awful.spawn("playerctl previous") end,
+        {description = "previous track", group = "media"}),
+
+    -- --------------------------
+    -- 💡 BRIGHTNESS
+    -- --------------------------
+
+    awful.key({}, "XF86MonBrightnessUp",
+        function() awful.spawn("brightnessctl set +10%") end,
+        {description = "brightness up", group = "brightness"}),
+
+    awful.key({}, "XF86MonBrightnessDown",
+        function() awful.spawn("brightnessctl set 10%-") end,
+        {description = "brightness down", group = "brightness"}),
+
+    -- --------------------------
+    -- 🔒 LOCK SCREEN
+    -- --------------------------
+    awful.key({ modkey, "Control" }, "l",
+        function() awful.spawn("i3lock-fancy") end,
+        {description = "lock screen", group = "system"}),
+
+    -- --------------------------
+    -- 🔋 BATTERY INFO
+    -- --------------------------
+    awful.key({ modkey, "Shift" }, "b",
+        function() awful.spawn.easy_async_with_shell("acpi -b", function(out)
+            naughty.notify({ title = "Battery", text = out })
+        end) end,
+        {description = "show battery status", group = "system"}),
+
+    -- --------------------------
+    -- 🖥 SYSTEM (reboot/shutdown)
+    -- --------------------------
+    awful.key({ modkey, "Control" }, "s",
+        function() awful.spawn("systemctl suspend") end,
+        {description = "suspend", group = "system"}),
+
+    awful.key({ modkey, "Control" }, "p",
+        function() awful.spawn("systemctl poweroff") end,
+        {description = "power off", group = "system"}),
+
+    awful.key({ modkey, "Control" }, "r",
+        function() awful.spawn("systemctl reboot") end,
+        {description = "reboot", group = "system"})
   )
 
   return globalkeys
