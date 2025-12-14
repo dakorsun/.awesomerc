@@ -150,7 +150,7 @@ function _M.get()
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
 
 
     -- --------------------------
