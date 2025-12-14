@@ -36,9 +36,9 @@ local function update_battery_info()
         end
 
         local icon = ""
-        if status == "Charging" then icon = "+ " end
+        if status == "Charging" then icon = " +" end
 
-        batterywidget.text = string.format("%s%s%%", icon, perc)
+        batterywidget.text = string.format("%s %s%%", icon, perc)
     end)
 end
 
