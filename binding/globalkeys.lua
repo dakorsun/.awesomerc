@@ -201,8 +201,10 @@ function _M.get()
     -- 🔒 LOCK SCREEN
     -- --------------------------
     awful.key({ modkey, "Control" }, "l",
-        function() awful.spawn("i3lock-fancy") end,
-        {description = "lock screen", group = "system"}),
+        -- function() awful.spawn("i3lock-fancy") end,
+        -- {description = "lock screen", group = "system"}),
+        function() awful.spawn("loginctl lock-session") end,
+        {description = "lock session", group = "system"}),
 
     -- --------------------------
     -- 🔋 BATTERY INFO

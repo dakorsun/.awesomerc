@@ -101,3 +101,6 @@ awful.rules.rules = main.rules(
 require("main.signals")
 -- }}}
 
+awful.spawn.with_shell(
+  "pgrep -x xss-lock || xss-lock --transfer-sleep-lock -- i3lock-fancy"
+)
